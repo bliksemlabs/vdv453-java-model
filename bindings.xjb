@@ -14,9 +14,9 @@
 
 	<!-- See the script bin/version_updater.sh It updates version in schema locations-->
 
-	<jxb:bindings schemaLocation="./src/main/resources/xsd/8.1.2.2/kv6-msg.xsd">
+	<jxb:bindings schemaLocation="./src/main/resources/xsd/VDV453_incl_454_V2017.c_ohne_SIRI.xsd">
 		<jxb:schemaBindings>
-			<jxb:package name="nl.connekt.bison.kv6" />
+			<jxb:package name="de.vdv453" />
 		</jxb:schemaBindings>
 	</jxb:bindings>
 

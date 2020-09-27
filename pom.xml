@@ -15,13 +15,13 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>nl.connekt.bison</groupId>
-    <artifactId>kv6-java-model</artifactId>
+    <groupId>de.vdv453</groupId>
+    <artifactId>vdv453-java-model</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <name>kv6-java-model</name>
+    <name>vdv453-java-model</name>
     <description>Generates Java model from KV6 xsds using jaxb.</description>
-    <url>https://github.com/bliksemlabs/kv6-java-model</url>
+    <url>https://github.com/bliksemlabs/vdv453-java-model</url>
     <licenses>
         <license>
             <name>EUPL-1.2 with modifications</name>
@@ -40,10 +40,10 @@
     </developers>
 
     <properties>
-        <kv6RepoName>KV6</kv6RepoName>
-        <kv6Branch>master</kv6Branch>
-        <kv6GithubUrl>https://github.com/BISONNL/${kv6RepoName}</kv6GithubUrl>
-        <kv6Version>8.1.2.2</kv6Version>
+        <vdv453RepoName>KV6</vdv453RepoName>
+        <vdv453Branch>master</vdv453Branch>
+        <vdv453GithubUrl>https://github.com/BISONNL/${vdv453RepoName}</vdv453GithubUrl>
+        <vdv453Version>8.1.2.2</vdv453Version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <assertj.core.version>3.4.1</assertj.core.version>
         <junit.version>4.12</junit.version>
@@ -58,9 +58,9 @@
     </properties>
 
     <scm>
-        <connection>scm:git:ssh://git@github.com/bliksemlabs/kv6-java-model.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/bliksemlabs/kv6-java-model.git</developerConnection>
-        <url>https://github.com/bliksemlabs/kv6-java-model/tree/master</url>
+        <connection>scm:git:ssh://git@github.com/bliksemlabs/vdv453-java-model.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/bliksemlabs/vdv453-java-model.git</developerConnection>
+        <url>https://github.com/bliksemlabs/vdv453-java-model/tree/master</url>
         <tag>HEAD</tag>
     </scm>
 
@@ -134,8 +134,8 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <version>1.6.0</version>
                 <executions>
+		    <!--
                     <execution>
-                        <!-- This is the current version which the model is built from. -->
                         <id>download-extract-current-version</id>
                         <phase>generate-sources</phase>
                         <goals>
@@ -143,15 +143,16 @@
                         </goals>
                         <configuration>
                             <environmentVariables>
-                                <BISON_REPO>${kv6RepoName}</BISON_REPO>
-                                <GIT_BRANCH>${kv6Version}</GIT_BRANCH>
-                                <GITHUB_URL>${kv6GithubUrl}</GITHUB_URL>
-                                <DESTINATION_PATH>src/main/resources/xsd/${kv6Version}</DESTINATION_PATH>
+                                <BISON_REPO>${vdv453RepoName}</BISON_REPO>
+                                <GIT_BRANCH>${vdv453Version}</GIT_BRANCH>
+                                <GITHUB_URL>${vdv453GithubUrl}</GITHUB_URL>
+                                <DESTINATION_PATH>src/main/resources/xsd/${vdv453Version}</DESTINATION_PATH>
                             </environmentVariables>
                             <executable>./bin/download-extract.sh</executable>
                         </configuration>
                     </execution>
-					<!--
+		    -->
+		    <!--
                     <execution>
                         <id>replace-hard-coded-id-in-bindings-file</id>
                         <phase>generate-sources</phase>
@@ -160,7 +161,7 @@
                         </goals>
                         <configuration>
                             <arguments>
-                                <argument>${kv6Version}</argument>
+                                <argument>${vdv453Version}</argument>
                             </arguments>
                             <executable>
                                 ./bin/version_updater.sh
@@ -176,7 +177,7 @@
                         </goals>
                         <configuration>
                             <arguments>
-                                <argument>${kv6Version}</argument>
+                                <argument>${vdv453Version}</argument>
                             </arguments>
                             <executable>./bin/annotation-replacer.sh</executable>
                         </configuration>
@@ -195,7 +196,7 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>generate-sources-for-kv6</id>
+                        <id>generate-sources-for-vdv453</id>
                         <phase>generate-sources</phase>
                         <goals>
                             <goal>xsdtojava</goal>
@@ -204,7 +205,7 @@
                             <xsdOptions>
                                 <xsdOption>
                                     <xsd>
-                                        ${basedir}/src/main/resources/xsd/${kv6Version}/kv6-msg.xsd
+                                        ${basedir}/src/main/resources/xsd/VDV453_incl_454_V2017.c_ohne_SIRI.xsd
                                     </xsd>
                                     <extension>true</extension>
                                     <bindingFile>bindings.xjb</bindingFile>
